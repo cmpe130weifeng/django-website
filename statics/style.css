@@ -1,0 +1,15 @@
+body {
+    background-color: lightblue !important;
+}
+
+.padding_log_in {
+    margin: auto !important;
+    width: 50% !important;
+    padding: 10px !important;
+}
+
+.spacers {
+    padding-top: 50px !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

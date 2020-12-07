@@ -1,0 +1,43 @@
+{% extends "main_menu/main_menu.html"%}
+
+
+    {% block body_block %}
+    <div class="ui centered grid stackable container">
+      <div class="column">
+        <div class="ui hidden divider spacers" style="padding-top: 5%;"></div>
+          {% if user.is_authenticated %}
+          
+          
+          <div class="ui message">
+            
+            <div class="header">Dashboard</div>
+            <p>Please choose following options</p>
+          
+          </div>
+          
+          <div class="three ui buttons">
+            {% if user.is_superuser %}
+            <a class="ui button" href="{% url 'accountant_page:index' %}">Admin</a>
+            {% else %}
+              
+              <a class="ui button" href="{% url 'employee_page:index'%}">Employee</a>
+            
+            {% endif %}
+          </div>
+
+          {% else %}
+          <div class="ui two column centered grid">
+            <div class="ui violet inverted header">
+                <h1 class="ui violet inverted header">Welcome To Payroll System</h1>
+                <h2>Please Log In</h2>
+                <a class="ui large primary button" href="{% url 'homepage:log_in' %}">
+                    Log In<i class="right arrow icon"></i>
+                </a>
+            </div>  
+          </div>
+        </div>
+      </div>
+    
+    {% endif %}
+
+    {% endblock %}

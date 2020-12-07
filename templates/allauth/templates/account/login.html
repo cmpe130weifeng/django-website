@@ -1,0 +1,62 @@
+{% extends "main_menu/main_menu.html"%}
+{% include "socialaccount/snippets/login_extra.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+  {% block body_block %}
+  <div class="ui centered grid stackable container">
+    <div class="column">
+      <div class="ui hidden divider spacers" style="padding-top: 5%;"></div>
+
+        <div class="ui two column centered grid">
+          <div class="column">
+            
+            <h2 class="ui teal center aligned header">Please Log In Your Account</h2>
+            
+            <form class="login ui large form" method="POST" action="">
+              {% csrf_token %}
+              {{ form.as_p}}
+                      
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+
+              <div class="ui grid">
+                <div class="six wide column">
+                  <a class="ui button secondary" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                </div>
+                <div class="three wide column"></div>
+                <div class="seven wide column">
+                  <button class="ui fluid small teal submit button" type="submit">{% trans "Sign In" %}</button>
+                </div>
+              </div>
+
+              <div class="ui grid">
+                                
+                <div class="ui two column centered grid">
+                    <a href="{% provider_login_url 'google' %}"class="ui google button"><i class="google icon"></i>Google</a>
+                    <a href="{% provider_login_url 'google' %}"class="ui facebook button"><i class="facebook icon"></i>Facebook</a>
+                    <a href="{% provider_login_url 'google' %}"class="ui twitter button"><i class="twitter icon"></i>Twitter</a>
+                    <a href="{% provider_login_url 'google' %}"class="ui instagram button"><i class="instagram icon"></i>Instagram</a>
+                    <a href="{% provider_login_url 'google' %}"class="ui amazon button"><i class="amazon icon"></i>Amazon</a>
+                </div>
+               
+              </div>
+              <div class="ui grid">
+                <div class="column">
+                  <div class="ui equal width center aligned padded grid">
+                    <div class="olive row">
+                      <a href="{% url 'account_signup' %}"><h4 class="ui dividing header">Please register if you don't have the account yet</h4></a>
+                    </div> 
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          
+          </div>
+        </div>
+      </div>
+    </div>  
+
+{% endblock %}

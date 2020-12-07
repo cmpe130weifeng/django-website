@@ -1,0 +1,48 @@
+{% extends "main_menu/main_menu.html"%}
+
+  {% block body_block %}
+  <div class="ui centered grid stackable container">
+    <div class="column">
+      <div class="ui hidden divider spacers" style="padding-top: 5%;"></div>
+
+        <div class="ui two column centered grid">
+          <div class="column">
+            
+            <h2 class="ui teal center aligned header">Please Log In Your Account</h2>
+            
+            <form class="login ui large form" method="POST" action="">
+              {% csrf_token %}
+              {{ form.as_p}}
+                      
+            
+              <div class="ui grid">
+                <div class="six wide column">
+                  <a class="ui button secondary" href="">Forgot Password?</a>
+                </div>
+                <div class="three wide column"></div>
+                <div class="seven wide column">
+                  <button class="ui fluid small teal submit button" type="submit">Sign In</button>
+                </div>
+              </div>
+
+              <div class="ui grid">
+                                
+                <div class="ui two column centered grid">
+                    <a href=""class="ui google button"><i class="google icon"></i>Google</a>
+                    <a href=""class="ui facebook button"><i class="facebook icon"></i>Facebook</a>
+                    <a href=""class="ui twitter button"><i class="twitter icon"></i>Twitter</a>
+                    <a href=""class="ui instagram button"><i class="instagram icon"></i>Instagram</a>
+                    <a href=""class="ui amazon button"><i class="amazon icon"></i>Amazon</a>
+                </div>
+               
+              </div>
+            
+
+            </form>
+          
+          </div>
+        </div>
+      </div>
+    </div>  
+
+{% endblock %}

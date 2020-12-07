@@ -1,0 +1,38 @@
+{% extends "main_menu/main_menu.html"%}
+{% include "socialaccount/snippets/login_extra.html" %}
+{% load i18n %}
+{% load account socialaccount %}
+
+  {% block body_block %}
+  <div class="ui centered grid stackable container">
+    <div class="column">
+      <div class="ui hidden divider spacers" style="padding-top: 5%;"></div>
+
+        <div class="ui two column centered grid">
+          <div class="column">
+            
+            <h2 class="ui teal center aligned header">Are You Sure You Would Like To Sign Out</h2>
+
+            <form method="post" action="{% url 'account_logout' %}">
+              {% csrf_token %}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+              {% endif %}
+              <div class="ui grid">
+                <div class="six wide column">
+                  <button class="ui fluid small teal submit button" type="submit">{% trans "Yes" %}</button>    
+                </div>
+                <div class="four wide column"></div>  
+                <div class="six wide column">
+                  <a class="ui fluid small teal submit button" type="submit" href="{% url 'homepage:index' %}">No</a>
+                </div>  
+              </div>
+            </form>  
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+            
+{% endblock %}
