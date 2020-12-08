@@ -21,20 +21,22 @@ def login_view(request):
         password = form.cleaned_data.get("password")
         user = authenticate(request, username=username, password=password)
         if not user:
+
             attempt = request.session["attempt"] or 0
             request.session["attempt"] = attempt + 1
             return render(request, "login.html", {"form": form, "invalid_user": True})
+
         else:
              
             login(request, user)
                 
-         
-
             first_name = request.user.first_name
             last_name = request.user.last_name
      
             employee_record = Employees.objects.get(first_name=first_name, last_name=last_name)
+            
             print(employee_record.emp_no)
+            
             variables = { 'current_page': 'homepage', 'employee_record': employee_record }
 
             return render(request, 'homepage.html', variables)

@@ -51,12 +51,25 @@ def request_insight(request, dept_id):
 
           records = return_emp_count_for_dept(connection, dept_id)
           records_genders = return_dept_gender_count(connection, dept_id)
+
+          first_name = request.user.first_name
+          last_name = request.user.last_name
+
+          employee_record = Employees.objects.get(first_name=first_name, last_name=last_name)  
+          emp_records = return_employee_details(employee_record.emp_no, connection) 
+          dept_name = ""
+          
+          for record in emp_records:
+               if (record.dept_name):
+                    dept_name = record.dept_name
+          dept_record = Departments.objects.get(dept_name=dept_name) 
+          print(records)
           print(records_genders)
      
      except Employees.DoesNotExist:
         raise Http404 
 
-     variables = { 'current_page': 'employee_page', 'records': records, 'records_genders': records_genders }
+     variables = { 'current_page': 'employee_page', 'records': records, 'records_genders': records_genders, 'dept_record': dept_record }
      return render(request, 'insight.html', variables)
 
 def request_employee_information(request, id):

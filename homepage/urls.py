@@ -11,4 +11,6 @@ urlpatterns = [
     path("log_out/", views.user_logout, name = "log_out"),
     path("about/", TemplateView.as_view(template_name="about.html"), name = "about"),
     
+
+    
 ]
