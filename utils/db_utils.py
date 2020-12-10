@@ -246,7 +246,7 @@ def add_employee_record(
 
 def add_department(db_connection, dept_name):
     cursor = db_connection.cursor()
-    sql = "select concat('d0',cast(cast(replace(max(dept_no),'d','') as signed)+1 as char)) from department"
+    sql = "select 'd0' || cast(cast(replace(max(dept_no),'d','') as signed)+1 as char) from department"
     cursor.execute(sql)
     dept_no = cursor.fetchone()[0]
 

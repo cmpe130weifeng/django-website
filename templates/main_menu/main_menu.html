@@ -12,7 +12,7 @@
     <body>   
       <nav>
         <div class = "ui inverted borderless top fixed fluid menu">
-          <a class ="header item" href="{% url 'homepage:index' %}">Payroll System</a>
+          <a class ="header item" href="{% url 'homepage:index' %}">Employee System</a>
         
           
       
@@ -30,8 +30,7 @@
             <div class="item">
               {% if user.is_authenticated %}
               <a class="ui primary button" href = "{% url 'homepage:log_out' %}">Log Out</a>
-              {% else %}
-              <a class="ui primary button" href = "">Log In</a>
+              
               {% endif %}
             </div>
           </div>
